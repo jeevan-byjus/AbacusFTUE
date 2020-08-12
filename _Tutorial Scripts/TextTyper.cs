@@ -12,6 +12,7 @@ public class TextTyper : MonoBehaviour
     private Abacus abacus;
     private int questionIndex;
     private TextMeshPro textField;
+    [SerializeField] Animator characterAnimator;
 
     private float typeDelay
     {
@@ -50,6 +51,7 @@ public class TextTyper : MonoBehaviour
 
     public void GiveExplanation(int hintNumber)
     {
+        characterAnimator.SetTrigger("AskQuestion");
         TypeOut(prompts[hintNumber].explanationPrompt);
         characterVoiceBox.clip = prompts[hintNumber].explanationAudio;
 
@@ -115,5 +117,6 @@ public class TextTyper : MonoBehaviour
     void ShowNextQuestion()
     {
         AskQuestion(questionIndex);
+        characterAnimator.SetTrigger("AskQuestion");
     }
 }
