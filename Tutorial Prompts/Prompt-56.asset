@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918b393c3b1a54c92ba470e0f0118543, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a22a51c5d25945c9be9043d33ae1105, type: 3}
   m_Name: Prompt-56
   m_EditorClassIdentifier: 
   answer: 56
   questionPrompt: What about the number 56?
-  questionAudio: {fileID: 8300000, guid: 4a8bdeb410f87447786dc6384e98a4e1, type: 3}
+  questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   explanationPrompt: That is how the 50s bead works! You're awesome! Let's move on
     to some big numbers!
-  explanationAudio: {fileID: 8300000, guid: 4a8bdeb410f87447786dc6384e98a4e1, type: 3}
+  explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

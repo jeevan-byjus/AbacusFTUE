@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918b393c3b1a54c92ba470e0f0118543, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a22a51c5d25945c9be9043d33ae1105, type: 3}
   m_Name: Prompt-0
   m_EditorClassIdentifier: 
   answer: 0
   questionPrompt: I know that if you move all the beads away from the middle, the
     abacus is set to zero! Could you reset this abacus to zero?
-  questionAudio: {fileID: 8300000, guid: 4a8bdeb410f87447786dc6384e98a4e1, type: 3}
+  questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   explanationPrompt: That's great!  Any abacus beads that are away from the middle
     are not counted!
-  explanationAudio: {fileID: 8300000, guid: 4a8bdeb410f87447786dc6384e98a4e1, type: 3}
+  explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}
