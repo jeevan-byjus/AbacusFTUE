@@ -17,13 +17,13 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
     /// But, can contain accumulation, and any other parsing logic if required.
     /// sole purpose is to read Vision data, convert to in game models and send those when requested for
     /// </summary>
-    public class OsmoVisionService : MonoBehaviour, IVisionService {
+    public class AFOsmoVisionService : MonoBehaviour, AFIVisionService {
         string lastJson;
-        BoundingBox visionBoundingBox;
+        AFBoundingBox visionBoundingBox;
 
         public void Init() {
             lastJson = "";
-            visionBoundingBox = new BoundingBox(new List<Vector2> { new Vector2(-100, 90), new Vector2(100, 90), new Vector2(100, -200), new Vector2(-100, -200) });
+            visionBoundingBox = new AFBoundingBox(new List<Vector2> { new Vector2(-100, 90), new Vector2(100, 90), new Vector2(100, -200), new Vector2(-100, -200) });
 
             VisionConnector.Register(
                     apiKey: API.Key,
@@ -40,7 +40,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
             lastJson = json;
         }
 
-        public ExtInput GetExtInput() {
+        public AFExtInput GetExtInput() {
             if (string.IsNullOrEmpty(lastJson)) { return null; }
 
             Debug.LogError("Got json " + lastJson);
@@ -48,13 +48,13 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
             var items = JsonUtility.FromJson<JOutput>(lastJson);
             var objs = items.items;
 
-            var defective1Id = objs.FindIndex(x => x.id == VisionUtil.ABACUS_BEAD_1_ID && string.Equals(x.type, VisionUtil.TYPE_DOMINO));
+            var defective1Id = objs.FindIndex(x => x.id == AFVisionUtil.ABACUS_BEAD_1_ID && string.Equals(x.type, AFVisionUtil.TYPE_DOMINO));
             if (defective1Id != -1) { objs.RemoveAt(defective1Id); }
 
             var camDimens = new Vector2(visionBoundingBox.topWidth, visionBoundingBox.height);
-            var abacus = VisionUtil.ParseAbacus(objs, camDimens);
+            var abacus = AFVisionUtil.ParseAbacus(objs, camDimens);
 
-            var ret = new ExtInput {
+            var ret = new AFExtInput {
                 abacus = abacus
             };
 

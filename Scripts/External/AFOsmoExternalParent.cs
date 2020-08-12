@@ -15,10 +15,10 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
     /// <summary>
     /// The top most parent in game hierarchy in case the setup is for Osmo
     /// </summary>
-    public class OsmoExternalParent : OsmoGameBase {
+    public class AFOsmoExternalParent : OsmoGameBase {
         [SerializeField] TangibleManager mManager;
-        [SerializeField] OsmoVisionService osmoVisionServiceView;
-        [SerializeField] HierarchyManager hierarchyManager;
+        [SerializeField] AFOsmoVisionService osmoVisionServiceView;
+        [SerializeField] AFHierarchyManager hierarchyManager;
 
         [SerializeField] GameObject visionObjsParent;
         [SerializeField] Abacus abacusPrefab;
@@ -32,8 +32,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
 
         void AssignRefs() {
             mManager = FindObjectOfType<TangibleManager>();
-            osmoVisionServiceView = FindObjectOfType<OsmoVisionService>();
-            hierarchyManager = FindObjectOfType<HierarchyManager>();
+            osmoVisionServiceView = FindObjectOfType<AFOsmoVisionService>();
+            hierarchyManager = FindObjectOfType<AFHierarchyManager>();
         }
 
         protected override void GameStart() {
@@ -52,7 +52,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
                 ToggleAbacus();
 
 #if UNITY_EDITOR
-                Factory.SetVisionService(new OsmoEditorVisionService());
+                AFFactory.SetVisionService(new AFOsmoEditorVisionService());
 #else
                 Factory.SetVisionService(osmoVisionServiceView);
 #endif

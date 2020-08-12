@@ -5,11 +5,11 @@ using Byjus.Gamepod.AbacusFTUE.Util;
 using Byjus.Gamepod.Common.Abacus.Vision;
 
 namespace Byjus.Gamepod.AbacusFTUE.Verticals {
-    public class InputParser : MonoBehaviour {
-        public IExtInputListener inputListener;
+    public class AFInputParser : MonoBehaviour {
+        public AFIExtInputListener inputListener;
         AbacusReader reader;
 
-        IVisionService visionService;
+        AFIVisionService visionService;
         int inputCount;
 
         int lastStableValue;
@@ -18,7 +18,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
         const int valueStabilityThreshold = 1;
 
         public void Init() {
-            visionService = Factory.GetVisionService();
+            visionService = AFFactory.GetVisionService();
             inputCount = 0;
             reader = new AbacusReader();
 
@@ -30,7 +30,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
         }
 
         IEnumerator ListenForInput() {
-            yield return new WaitForSeconds(Constants.INPUT_DELAY);
+            yield return new WaitForSeconds(AFConstants.INPUT_DELAY);
             inputCount++;
 
 
@@ -61,7 +61,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
         }
     }
 
-    public interface IExtInputListener {
+    public interface AFIExtInputListener {
         void OnAbacusValue(int value);
     }
 

@@ -9,7 +9,7 @@ using System.Linq;
 using Byjus.Gamepod.AbacusFTUE.Views;
 
 namespace Byjus.Gamepod.AbacusFTUE.Util {
-    public class VisionUtil {
+    public class AFVisionUtil {
         public static float CAMERA_ADJUST_X_RATIO = 0.8f;
         public static float CAMERA_ADJUST_Y_RATIO = 0.8f;
 
@@ -66,10 +66,10 @@ namespace Byjus.Gamepod.AbacusFTUE.Util {
             return ret;
         }
 
-        public static ExtInput ParseInput(List<JItem> jsonItems, Vector2 camDimens) {
+        public static AFExtInput ParseInput(List<JItem> jsonItems, Vector2 camDimens) {
             var abacus = ParseAbacus(jsonItems, camDimens);
 
-            var ret = new ExtInput {
+            var ret = new AFExtInput {
                 abacus = abacus
             };
 
@@ -92,25 +92,25 @@ namespace Byjus.Gamepod.AbacusFTUE.Util {
                 //}
 
                 switch (obj.id) {
-                    case VisionUtil.ABACUS_MARKER_ID:
+                    case AFVisionUtil.ABACUS_MARKER_ID:
                         ret.boardMarker = new ExtObject { position = pos };
                         break;
-                    case VisionUtil.ABACUS_BEAD_5_ID:
+                    case AFVisionUtil.ABACUS_BEAD_5_ID:
                         ret.bead5 = new ExtObject { position = pos };
                         break;
-                    case VisionUtil.ABACUS_BEAD_1_ID:
+                    case AFVisionUtil.ABACUS_BEAD_1_ID:
                         ret.beads1.Add(new ExtObject { position = pos });
                         break;
-                    case VisionUtil.ABACUS_BEAD_50_ID:
+                    case AFVisionUtil.ABACUS_BEAD_50_ID:
                         ret.bead50 = new ExtObject { position = pos };
                         break;
-                    case VisionUtil.ABACUS_BEAD_10_ID:
+                    case AFVisionUtil.ABACUS_BEAD_10_ID:
                         ret.beads10.Add(new ExtObject { position = pos });
                         break;
-                    case VisionUtil.ABACUS_BEAD_500_ID:
+                    case AFVisionUtil.ABACUS_BEAD_500_ID:
                         ret.bead500 = new ExtObject { position = pos };
                         break;
-                    case VisionUtil.ABACUS_BEAD_100_ID:
+                    case AFVisionUtil.ABACUS_BEAD_100_ID:
                         ret.beads100.Add(new ExtObject { position = pos });
                         break;
                 }

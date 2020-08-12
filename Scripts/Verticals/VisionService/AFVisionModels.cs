@@ -49,7 +49,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
         }
     }
 
-    public class BoundingBox {
+    public class AFBoundingBox {
         public Vector2 topLeftRef;
         public Vector2 newTL;
         public Vector2 newTR;
@@ -61,7 +61,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
         public float height;
 
 
-        public BoundingBox(List<Vector2> points) {
+        public AFBoundingBox(List<Vector2> points) {
             topLeftRef = points[0];
             newTL = GetRelativePosFromTL(points[0]);
             newTR = GetRelativePosFromTL(points[1]);

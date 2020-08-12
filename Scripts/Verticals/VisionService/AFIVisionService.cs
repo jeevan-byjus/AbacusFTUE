@@ -10,12 +10,12 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
     /// Difference is it should mainly work with in-game models and shouldn't use anything platform dependent
     /// so, no vision related models or any other external platform related models
     /// </summary>
-    public interface IVisionService {
+    public interface AFIVisionService {
         void Init();
-        ExtInput GetExtInput();
+        AFExtInput GetExtInput();
     }
 
-    public class ExtInput {
+    public class AFExtInput {
         public ExtAbacus abacus;
 
         public override string ToString() {

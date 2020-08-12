@@ -9,14 +9,14 @@ using System.Collections.Generic;
 #if !CC_STANDALONE
 
 namespace Byjus.Gamepod.AbacusFTUE.Verticals {
-    public class OsmoEditorVisionService : IVisionService {
+    public class AFOsmoEditorVisionService : AFIVisionService {
 
-        public ExtInput GetExtInput() {
+        public AFExtInput GetExtInput() {
             var objs = GameObject.FindObjectsOfType<EditorVisionObject>().ToList();
-            var mimicObjs = VisionUtil.GetMimicItems(objs.ToList());
+            var mimicObjs = AFVisionUtil.GetMimicItems(objs.ToList());
 
-            var camDimens = CameraUtil.MainDimens();
-            var ret = VisionUtil.ParseInput(mimicObjs, camDimens);
+            var camDimens = AFCameraUtil.MainDimens();
+            var ret = AFVisionUtil.ParseInput(mimicObjs, camDimens);
             Debug.LogError("Returning: " + ret);
             return ret;
         }
