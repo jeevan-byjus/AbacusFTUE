@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Byjus.Gamepod.AbacusFTUE.Verticals;
 using Byjus.Gamepod.AbacusFTUE.Util;
+using Byjus.Gamepod.Common.Abacus;
 
 #if !CC_STANDALONE
 using Osmo.SDK;
@@ -18,6 +19,12 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         [SerializeField] TangibleManager mManager;
         [SerializeField] OsmoVisionService osmoVisionServiceView;
         [SerializeField] HierarchyManager hierarchyManager;
+
+        [SerializeField] GameObject visionObjsParent;
+        [SerializeField] Abacus abacusPrefab;
+        [SerializeField] Abacus abacus;
+
+        bool abacusVisible;
 
         public Vector2 GetCameraDimens() {
             return new Vector2(TangibleCamera.Width, TangibleCamera.Height);
@@ -39,6 +46,11 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
 
                 AssignRefs();
 
+                abacus = Instantiate(abacusPrefab, visionObjsParent.transform);
+                abacus.Init();
+                abacusVisible = true;
+                ToggleAbacus();
+
 #if UNITY_EDITOR
                 Factory.SetVisionService(new OsmoEditorVisionService());
 #else
@@ -49,6 +61,17 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
             } else {
                 Debug.LogWarning("[VisionTest] You are running without the Osmo bridge. No Osmo services will be loaded. Bridge.Helper will be null");
             }
+        }
+
+        private void Update() {
+            if (Input.GetKeyUp(KeyCode.X)) {
+                ToggleAbacus();
+            }
+        }
+
+        void ToggleAbacus() {
+            abacusVisible = !abacusVisible;
+            abacus.gameObject.SetActive(abacusVisible);
         }
 
         void OnSettingsButtonClicked() {
