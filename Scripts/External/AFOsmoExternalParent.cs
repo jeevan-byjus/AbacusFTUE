@@ -4,6 +4,7 @@ using UnityEngine;
 using Byjus.Gamepod.AbacusFTUE.Verticals;
 using Byjus.Gamepod.AbacusFTUE.Util;
 using Byjus.Gamepod.Common.Abacus;
+using UnityEngine.UI;
 
 #if !CC_STANDALONE
 using Osmo.SDK;
@@ -23,6 +24,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         [SerializeField] GameObject visionObjsParent;
         [SerializeField] Abacus abacusPrefab;
         [SerializeField] Abacus abacus;
+        [SerializeField] Button showAbacusBtn;
 
         bool abacusVisible;
 
@@ -45,16 +47,12 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
                 Bridge.Helper.SetOsmoWorldStickersAllowed(true);
 
                 AssignRefs();
-
-                abacus = Instantiate(abacusPrefab, visionObjsParent.transform);
-                abacus.Init();
-                abacusVisible = true;
-                ToggleAbacus();
+                SetupUI();
 
 #if UNITY_EDITOR
                 AFFactory.SetVisionService(new AFOsmoEditorVisionService());
 #else
-                Factory.SetVisionService(osmoVisionServiceView);
+                AFFactory.SetVisionService(osmoVisionServiceView);
 #endif
                 hierarchyManager.Setup();
 
@@ -63,13 +61,26 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
             }
         }
 
+        void SetupUI() {
+            abacus = Instantiate(abacusPrefab, visionObjsParent.transform);
+            abacus.Init();
+            abacusVisible = true;
+            ToggleAbacus();
+
+#if BUILD_NO_ABACUS
+            showAbacusBtn.gameObject.SetActive(true);
+#else
+            showAbacusBtn.gameObject.SetActive(false);
+#endif
+        }
+
         private void Update() {
             if (Input.GetKeyUp(KeyCode.X)) {
                 ToggleAbacus();
             }
         }
 
-        void ToggleAbacus() {
+        public void ToggleAbacus() {
             abacusVisible = !abacusVisible;
             abacus.gameObject.SetActive(abacusVisible);
         }
