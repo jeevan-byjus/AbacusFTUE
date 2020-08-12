@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Byjus.Gamepod.Template.Controllers;
+using Byjus.Gamepod.AbacusFTUE.Controllers;
 
-namespace Byjus.Gamepod.Template.Views {
+namespace Byjus.Gamepod.AbacusFTUE.Views {
 
     public class GameManagerView : MonoBehaviour, IGameManagerView {
         public IGameManagerCtrl ctrl;

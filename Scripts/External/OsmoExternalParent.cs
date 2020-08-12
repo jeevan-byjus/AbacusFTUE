@@ -1,25 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Byjus.Gamepod.Template.Verticals;
-using Byjus.Gamepod.Template.Util;
+using Byjus.Gamepod.AbacusFTUE.Verticals;
+using Byjus.Gamepod.AbacusFTUE.Util;
 
 #if !CC_STANDALONE
 using Osmo.SDK;
 using Osmo.Container.Common;
 using Osmo.SDK.Internal;
 
-namespace Byjus.Gamepod.Template.Externals {
+namespace Byjus.Gamepod.AbacusFTUE.Externals {
 
     /// <summary>
     /// The top most parent in game hierarchy in case the setup is for Osmo
     /// </summary>
-    public class OsmoExternalParent : OsmoGameBase, IOsmoEditorVisionHelper {
+    public class OsmoExternalParent : OsmoGameBase {
         [SerializeField] TangibleManager mManager;
         [SerializeField] OsmoVisionService osmoVisionServiceView;
         [SerializeField] HierarchyManager hierarchyManager;
-
-        public TangibleManager tangibleManager { get { return mManager; } }
 
         public Vector2 GetCameraDimens() {
             return new Vector2(TangibleCamera.Width, TangibleCamera.Height);
@@ -42,7 +40,7 @@ namespace Byjus.Gamepod.Template.Externals {
                 AssignRefs();
 
 #if UNITY_EDITOR
-                Factory.SetVisionService(new OsmoEditorVisionService(this));
+                Factory.SetVisionService(new OsmoEditorVisionService());
 #else
                 Factory.SetVisionService(osmoVisionServiceView);
 #endif
@@ -57,12 +55,6 @@ namespace Byjus.Gamepod.Template.Externals {
             Debug.LogWarning("Settings Clicked");
         }
     }
-
-    public interface IOsmoEditorVisionHelper {
-        TangibleManager tangibleManager { get; }
-        Vector2 GetCameraDimens();
-    }
-
 
     
 }

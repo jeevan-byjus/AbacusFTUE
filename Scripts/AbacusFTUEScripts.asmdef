@@ -1,0 +1,19 @@
+{
+    "name": "AbacusFTUE-Scripts",
+    "references": [
+        "sdk-plugins",
+        "container-api",
+        "gamehelper-scripts",
+        "gamehelper-tweening",
+        "gamehelper-editor",
+        "GamepodCommon"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

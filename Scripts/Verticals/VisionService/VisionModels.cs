@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Byjus.Gamepod.Template.Util;
+using Byjus.Gamepod.AbacusFTUE.Util;
 
-namespace Byjus.Gamepod.Template.Verticals {
+namespace Byjus.Gamepod.AbacusFTUE.Verticals {
 
     [Serializable]
     public class JOutput {
@@ -11,22 +11,26 @@ namespace Byjus.Gamepod.Template.Verticals {
     }
 
     [Serializable]
-    public class JItem {
-        public string color;
+    public class JItem {        
         public int id;
         public Point pt;
+        public float angle;
+        public string shape;
+        public string type;
 
         public JItem() {
         }
 
         public JItem(JItem other) {
-            color = other.color;
             id = other.id;
             pt = other.pt;
+            angle = other.angle;
+            shape = other.shape;
+            type = other.type;
         }
 
         public override string ToString() {
-            return "Color: " + color + ", id: " + id + ", pos: (" + pt.x + ", " + pt.y + ")";
+            return "Id: " + id + ", pos: " + pt + ", Rotation: " + angle + ", Shape: " + shape + ", Type: " + type;
         }
     }
 
@@ -109,11 +113,6 @@ namespace Byjus.Gamepod.Template.Verticals {
 
 
             return new Vector2(scrX, scrY);
-        }
-
-        public bool PositionEquals(Vector2 point1, Vector2 point2) {
-            return Mathf.Abs(point1.x - point2.x) < Constants.HW_POINT_COMPARE_EPSILON &&
-                Mathf.Abs(point1.y - point2.y) < Constants.HW_POINT_COMPARE_EPSILON;
         }
     }
 }

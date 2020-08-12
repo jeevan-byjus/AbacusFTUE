@@ -1,7 +1,7 @@
 {
-    "name": "Template-Tests",
+    "name": "AbacusFTUE-Tests",
     "references": [
-        "Template-Scripts"
+        "AbacusFTUE-Scripts"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

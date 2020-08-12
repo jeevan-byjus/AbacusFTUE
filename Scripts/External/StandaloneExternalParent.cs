@@ -1,4 +1,4 @@
-﻿using Byjus.Gamepod.Template.Verticals;
+﻿using Byjus.Gamepod.AbacusFTUE.Verticals;
 using UnityEngine;
 
 #if CC_STANDALONE

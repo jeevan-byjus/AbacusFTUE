@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections.Generic;
-using Byjus.Gamepod.Template.Util;
-using UnityEngine.UI;
+using Byjus.Gamepod.AbacusFTUE.Util;
+using Byjus.Gamepod.AbacusFTUE.Views;
+using System.Linq;
 
 #if !CC_STANDALONE
 using Osmo.SDK.VisionPlatformModule;
 using Osmo.SDK.Vision;
 
-namespace Byjus.Gamepod.Template.Verticals {
+namespace Byjus.Gamepod.AbacusFTUE.Verticals {
 
     /// <summary>
     /// Implementation of VisionService on iPad Osmo Build
@@ -27,9 +27,9 @@ namespace Byjus.Gamepod.Template.Verticals {
 
             VisionConnector.Register(
                     apiKey: API.Key,
-                    objectName: "OsmoVisionServiceView",
+                    objectName: "OsmoVisionService",
                     functionName: "DispatchEvent",
-                    mode: 147,
+                    mode: 152,
                     async: false,
                     hires: false
                 );
@@ -40,37 +40,25 @@ namespace Byjus.Gamepod.Template.Verticals {
             lastJson = json;
         }
 
-        public List<ExtInput> GetVisionObjects() {
-            var output = JsonUtility.FromJson<JOutput>(lastJson);
+        public ExtInput GetExtInput() {
+            if (string.IsNullOrEmpty(lastJson)) { return null; }
 
-            var ret = new List<ExtInput>();
-            int numBlues = 0, numReds = 0;
-            foreach (var item in output.items) {
-                var pos = visionBoundingBox.GetScreenPoint(CameraUtil.MainDimens(), item.pt);
-                pos = PosAdjustments(pos);
+            Debug.LogError("Got json " + lastJson);
 
-                if (string.Equals(item.color, "blue")) {
-                    var it = new ExtInput { id = 100 + numBlues++, type = TileType.BLUE_ROD, position = pos };
-                    ret.Add(it);
-                } else if (string.Equals(item.color, "red")) {
-                    var it = new ExtInput { id = 1000 + numReds++, type = TileType.RED_CUBE, position = pos };
-                    ret.Add(it);
-                }
-            }
+            var items = JsonUtility.FromJson<JOutput>(lastJson);
+            var objs = items.items;
+
+            var defective1Id = objs.FindIndex(x => x.id == VisionUtil.ABACUS_BEAD_1_ID && string.Equals(x.type, VisionUtil.TYPE_DOMINO));
+            if (defective1Id != -1) { objs.RemoveAt(defective1Id); }
+
+            var camDimens = new Vector2(visionBoundingBox.topWidth, visionBoundingBox.height);
+            var abacus = VisionUtil.ParseAbacus(objs, camDimens);
+
+            var ret = new ExtInput {
+                abacus = abacus
+            };
 
             return ret;
-        }
-
-        Vector2 PosAdjustments(Vector2 screenPoint) {
-            // for camera
-            var x = screenPoint.x * Constants.CAMERA_ADJUST_X_RATIO;
-            var y = screenPoint.y * Constants.CAMERA_ADJUST_Y_RATIO;
-
-            // round off
-            x = (float) Math.Round(x, Constants.POSITION_ROUND_OFF_TO_DIGITS);
-            y = (float) Math.Round(y, Constants.POSITION_ROUND_OFF_TO_DIGITS);
-
-            return new Vector2(x, y);
         }
     }
 }

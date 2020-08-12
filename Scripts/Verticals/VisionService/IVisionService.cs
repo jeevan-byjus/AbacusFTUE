@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Byjus.Gamepod.Common.Abacus.Vision;
+using Byjus.Gamepod.Common.Vision;
+using Byjus.Gamepod.AbacusFTUE.Util;
 
-namespace Byjus.Gamepod.Template.Verticals {
+namespace Byjus.Gamepod.AbacusFTUE.Verticals {
     /// <summary>
     /// This is the interface used by whichever class wants to read Vision Data
     /// Difference is it should mainly work with in-game models and shouldn't use anything platform dependent
@@ -9,26 +12,14 @@ namespace Byjus.Gamepod.Template.Verticals {
     /// </summary>
     public interface IVisionService {
         void Init();
-        List<ExtInput> GetVisionObjects();
+        ExtInput GetExtInput();
     }
 
-    public enum TileType { RED_CUBE, BLUE_ROD }
-
     public class ExtInput {
-        public TileType type;
-        public int id;
-        public Vector2 position;
-
-        public ExtInput() { }
-
-        public ExtInput(TileType type, int id, Vector2 position) {
-            this.type = type;
-            this.id = id;
-            this.position = position;
-        }
+        public ExtAbacus abacus;
 
         public override string ToString() {
-            return id + ", " + type + ", (" + position.x + ", " + position.y + ")";
+            return "Abacus: " + abacus;
         }
     }
 }

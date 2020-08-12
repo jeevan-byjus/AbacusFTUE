@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using Byjus.Gamepod.Template.Controllers;
-using Byjus.Gamepod.Template.Views;
-using Byjus.Gamepod.Template.Verticals;
+using Byjus.Gamepod.AbacusFTUE.Controllers;
+using Byjus.Gamepod.AbacusFTUE.Views;
+using Byjus.Gamepod.AbacusFTUE.Verticals;
 
-namespace Byjus.Gamepod.Template.Externals {
+namespace Byjus.Gamepod.AbacusFTUE.Externals {
     /// <summary>
     /// Since there are controllers (non-monobehaviors) involved, we can't just directly assign references
     /// So, this class is used which manages all reference assigning
