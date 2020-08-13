@@ -7,15 +7,26 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 {
     public class AbacusFTUEUIManager : MonoBehaviour
     {
-        public CanvasGroup questionsUiGroup;
-        public TextTyper textTyper;
-        public Animator firstQuestionAnimator;
-        public Animator questionUiAnimator;
+        [SerializeField] CanvasGroup questionsUiGroup;
+        [SerializeField] TextTyper textTyper;
+        [SerializeField] Animator firstQuestionAnimator;
+        [SerializeField] Animator questionUiAnimator;
+        [SerializeField] AbacusHintSystem abacusHintSystem;
+        [SerializeField] Button hintButton;
+        [SerializeField] Button resetButton;
         private bool intiated = false;
+        private int currentAbacusQuestion;
         void OnEnable()
         {
             AFGameManagerView.OnAbacusValueChanged += OnAbacusValueChanged;
             intiated = false;
+            abacusHintSystem.gameObject.SetActive(false);
+        }
+
+        private void Start()
+        {
+            hintButton.onClick.AddListener(OnHintButtonClicked);
+            resetButton.onClick.AddListener(OnResetButtonClicked);
         }
 
         void OnDisable()
@@ -38,6 +49,18 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
                 firstQuestionAnimator.SetTrigger("Dissapear");
                 questionUiAnimator.SetTrigger("Appear");
             }
+        }
+
+        void OnHintButtonClicked()
+        {
+            currentAbacusQuestion = textTyper.prompts[textTyper.questionIndex].answer;
+            abacusHintSystem.gameObject.SetActive(true);
+            abacusHintSystem.GetComponent<Animator>().SetTrigger(currentAbacusQuestion.ToString());
+        }
+
+        void OnResetButtonClicked()
+        {
+            abacusHintSystem.gameObject.SetActive(false);
         }
     }
 

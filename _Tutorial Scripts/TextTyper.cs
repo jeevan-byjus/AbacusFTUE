@@ -10,9 +10,9 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         [SerializeField] private float typingSpeed = 1f;
         public float delayBetweenPrompts = 5f;
         [SerializeField] private AudioSource characterVoiceBox;
-        [SerializeField] private TutorialPrompt[] prompts;
+        public TutorialPrompt[] prompts;
         private Abacus abacus;
-        [SerializeField] int questionIndex = 5;
+        public int questionIndex = 0;
         private TextMeshPro textField;
         [SerializeField] Animator characterAnimator;
         [SerializeField] OsmoGameBase osmoGame;
