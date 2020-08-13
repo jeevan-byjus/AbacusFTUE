@@ -15,8 +15,8 @@ MonoBehaviour:
   answer: 869
   questionPrompt: And 869?
   questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: Perfect! You're really good at this! You're now ready to play
-    this next game! I hope you have tons of fun! Bye!
+  explanationPrompt: Of course! I should have known!  Thanks a lot for helping me
+    with my homework! See ya around!
   explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

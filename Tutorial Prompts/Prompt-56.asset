@@ -15,8 +15,8 @@ MonoBehaviour:
   answer: 56
   questionPrompt: What about the number 56?
   questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: That is how the 50s bead works! You're awesome! Let's move on
-    to some big numbers!
+  explanationPrompt: Pssh! I should have known! You're better at this than I am! Let's
+    move on to some LARGER numbers.
   explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

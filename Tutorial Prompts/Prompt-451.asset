@@ -15,7 +15,7 @@ MonoBehaviour:
   answer: 451
   questionPrompt: How about 451?
   questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: Yeah! 451 is made with four 100s beads, a 50 bead and a 1 bead!
+  explanationPrompt: Yeah!  451 is just (400+50+1).   I knew that!
   explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

@@ -14,12 +14,14 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         [SerializeField] AbacusHintSystem abacusHintSystem;
         [SerializeField] Button hintButton;
         [SerializeField] Button resetButton;
-        private bool intiated = false;
+        private bool initiated = false;
         private int currentAbacusQuestion;
+        private int currentAbacusReading = 0;
+
         void OnEnable()
         {
             AFGameManagerView.OnAbacusValueChanged += OnAbacusValueChanged;
-            intiated = false;
+            initiated = false;
             abacusHintSystem.gameObject.SetActive(false);
         }
 
@@ -37,17 +39,15 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
         void OnAbacusValueChanged(int abacusValue)
         {
-            if(abacusValue >= 0 && !intiated)
+            if(abacusValue >= 0 && !initiated)
             {
-                intiated = true;
+                initiated = true;
+                textTyper.DisableQuestions();
                 questionsUiGroup.alpha = 1;
-                if(abacusValue != 0)
-                    textTyper.AskQuestion(0);
-                else
-                    textTyper.AskQuestion(1);
-
+                currentAbacusReading = abacusValue;
                 firstQuestionAnimator.SetTrigger("Dissapear");
                 questionUiAnimator.SetTrigger("Appear");
+                Invoke("StartAskingQuestions", 1.5f);
             }
         }
 
@@ -61,6 +61,16 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         void OnResetButtonClicked()
         {
             abacusHintSystem.gameObject.SetActive(false);
+        }
+
+        void StartAskingQuestions()
+        {
+            
+            if (currentAbacusReading != 0)
+                textTyper.AskQuestion(0);
+            else
+                textTyper.AskQuestion(1);
+
         }
     }
 

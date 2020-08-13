@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Prompt-5
   m_EditorClassIdentifier: 
   answer: 5
-  questionPrompt: What do you think would happen if you brought the 5-bead toward
-    the center??
+  questionPrompt: But that means...  What do you think would happen if you brought
+    the 5-key  toward the center??
   questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: Good job! Any abacus bead brought towards the center is counted!
-    You just made 5 on your abacus!
+  explanationPrompt: Exactly!  Any abacus key brought towards the center, counts!
   explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

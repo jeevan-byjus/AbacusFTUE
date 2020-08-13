@@ -141,7 +141,10 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             }
         }
 
-
+        public void DisableQuestions()
+        {
+            textField.text = "";
+        }
     }
 }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   answer: 38
   questionPrompt: Can you make the number 38?
   questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: That's 3-tens, and 8-ones!  You're on a roll!
+  explanationPrompt: That's 3-tens, and 8-ones! Piece of cake!
   explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}
