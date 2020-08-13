@@ -50,6 +50,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
 
 #if UNITY_EDITOR
                 AFFactory.SetVisionService(new AFOsmoEditorVisionService());
+#elif BUILD_NO_ABACUS
+                AFFactory.SetVisionService(new AFOsmoEditorVisionService());
 #else
                 AFFactory.SetVisionService(osmoVisionServiceView);
 #endif
