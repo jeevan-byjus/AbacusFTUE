@@ -138,20 +138,19 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
         private void CheckAnswer(object sender, EventArgs e)
         {
+
             if (null != this)
             {
+                if (characterVoiceBox.isPlaying)
+                    return;
                 if (abacus.Total == prompts[questionIndex].answer)
                 {
                     GiveExplanation(questionIndex);
 
                     questionIndex++;
-                    if(characterVoiceBox.isPlaying)
-                    {
-                        Invoke("ShowNextQuestion", characterVoiceBox.clip.length + .5f);
-                    }
-                    else
-                    Invoke("ShowNextQuestion", delayBetweenPrompts);
-
+                    
+                    Invoke("ShowNextQuestion", characterVoiceBox.clip.length);
+                    
                 }
             }
         }
