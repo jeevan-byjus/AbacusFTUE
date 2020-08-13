@@ -35,6 +35,16 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
             abacus.OnValueChanged += CheckAnswer;
             questionIndex = 0;
+            
+        }
+
+        private void OnEnable()
+        {
+            Invoke("PlayIntroAudio", 1.5f);
+        }
+
+        void PlayIntroAudio()
+        {
             characterVoiceBox.clip = introAudio;
             characterVoiceBox.Play();
         }
