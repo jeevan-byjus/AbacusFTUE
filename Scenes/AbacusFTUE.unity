@@ -993,5 +993,15 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1866820553355720768, guid: 3bca41cc3a00d43afa53489fd5f1cd5f,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 257
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651331276027331828, guid: 3bca41cc3a00d43afa53489fd5f1cd5f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bca41cc3a00d43afa53489fd5f1cd5f, type: 3}

@@ -49,6 +49,7 @@ public class AbacusKey : MonoBehaviour
     #region Functions in class
     public void ToggleKey()
     {
+        return;
         engaged = !engaged;
         float posY = engaged? keyPositions.activeYPosition : keyPositions.restingYPosition;
         transform.localPosition = new Vector3(transform.localPosition.x, posY, transform.localPosition.z);
