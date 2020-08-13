@@ -1463,7 +1463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.33, y: 6.81}
+  m_AnchoredPosition: {x: -1.41, y: 6.78}
   m_SizeDelta: {x: 8.68, y: 2.991}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1866820553355720775
@@ -1656,7 +1656,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 013b876d5d907475c94881c9e37bf1ae, type: 2}
   - {fileID: 11400000, guid: 3bc0fe5907d4e457db0e5c4fd6cb0f64, type: 2}
   - {fileID: 11400000, guid: 5ef44e74c6b2d41c3874cfd7a96169eb, type: 2}
+  questionIndex: 0
   characterAnimator: {fileID: 1866820555293132555}
+  osmoGame: {fileID: 0}
 --- !u!95 &1426335721
 Animator:
   serializedVersion: 3
@@ -1829,6 +1831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866820553483194547}
+  - component: {fileID: 1443924268387897958}
   m_Layer: 0
   m_Name: Tutorial Area
   m_TagString: Untagged
@@ -1853,6 +1856,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1443924268387897958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866820553483194546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac9c6f2a531b478daf3f0a3e0653705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionsUiGroup: {fileID: 1866820555255032129}
+  textTyper: {fileID: 1651331275354202778}
+  firstQuestionAnimator: {fileID: 659532820}
+  questionUiAnimator: {fileID: 542870727404564813}
 --- !u!1 &1866820553498365898
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,13 +4797,13 @@ GameObject:
   - component: {fileID: 1866820554410078938}
   - component: {fileID: 1866820554410078936}
   - component: {fileID: 1866820554410078939}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1866820554410078938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7485,13 +7504,13 @@ GameObject:
   - component: {fileID: 1866820555145259676}
   - component: {fileID: 1866820555145259679}
   - component: {fileID: 1866820555145259678}
-  m_Layer: 5
+  m_Layer: 30
   m_Name: Temp Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1866820555145259673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7509,8 +7528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -378.26, y: -519.25}
-  m_SizeDelta: {x: 68.6, y: 30}
+  m_AnchoredPosition: {x: -377.6, y: -519.54}
+  m_SizeDelta: {x: 22.09, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1866820555145259676
 CanvasRenderer:

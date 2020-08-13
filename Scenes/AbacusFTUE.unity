@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &115209213
 RectTransform:
   m_ObjectHideFlags: 0
@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 233337674}
   - component: {fileID: 233337675}
   - component: {fileID: 233337673}
+  - component: {fileID: 233337676}
   m_Layer: 0
   m_Name: MainParent
   m_TagString: Untagged
@@ -297,14 +298,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204eda24e960549b08f27601937c3bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mManager: {fileID: 0}
-  osmoVisionServiceView: {fileID: 0}
-  hierarchyManager: {fileID: 0}
+  mManager: {fileID: 759177799}
+  osmoVisionServiceView: {fileID: 401863912}
+  hierarchyManager: {fileID: 233337673}
   visionObjsParent: {fileID: 987579734}
   abacusPrefab: {fileID: 8942009358308897015, guid: 00a5cfe303ff54bd1a333ee49a8d0c0e,
     type: 3}
   abacus: {fileID: 0}
-  showAbacusBtn: {fileID: 0}
+  showAbacusBtn: {fileID: 115209214}
+--- !u!114 &233337676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233337672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e27d96ab81b459993b51939aec5877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameBase_: {fileID: 233337675}
+  manualSceneOverride_: 
+  gameIdOverride_: AbacusFTUE
 --- !u!1 &320093749
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,16 +982,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866820553355720781, guid: 3bca41cc3a00d43afa53489fd5f1cd5f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 6.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866820553355720781, guid: 3bca41cc3a00d43afa53489fd5f1cd5f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 8.68
       objectReference: {fileID: 0}
     - target: {fileID: 1866820553355720774, guid: 3bca41cc3a00d43afa53489fd5f1cd5f,
         type: 3}

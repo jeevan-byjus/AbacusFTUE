@@ -60,9 +60,12 @@ public class AbacusKey : MonoBehaviour
     {
         // Similar to toggle key, but allows you to specifically set to true/false
         // Also, does not push the rest of the train triggering a recursive loop of infinite depth
-        engaged = active;
-        float posY = engaged? keyPositions.activeYPosition : keyPositions.restingYPosition;
-        transform.localPosition = new Vector3(transform.localPosition.x, posY, transform.localPosition.z);
+        if (this != null)
+        {
+            engaged = active;
+            float posY = engaged ? keyPositions.activeYPosition : keyPositions.restingYPosition;
+            transform.localPosition = new Vector3(transform.localPosition.x, posY, transform.localPosition.z);
+        }
     }
 
     IEnumerator AnimateKey(bool active)
@@ -75,7 +78,10 @@ public class AbacusKey : MonoBehaviour
     {
         engaged = false;
         float posY = keyPositions.restingYPosition;
-        transform.localPosition = new Vector3(transform.localPosition.x, posY, transform.localPosition.z);
+        if (this != null)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, posY, transform.localPosition.z);
+        }
     }
     #endregion
     

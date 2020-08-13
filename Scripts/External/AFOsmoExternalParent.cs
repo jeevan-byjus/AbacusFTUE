@@ -5,7 +5,6 @@ using Byjus.Gamepod.AbacusFTUE.Verticals;
 using Byjus.Gamepod.AbacusFTUE.Util;
 using Byjus.Gamepod.Common.Abacus;
 using UnityEngine.UI;
-
 #if !CC_STANDALONE
 using Osmo.SDK;
 using Osmo.Container.Common;
@@ -16,7 +15,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
     /// <summary>
     /// The top most parent in game hierarchy in case the setup is for Osmo
     /// </summary>
-    public class AFOsmoExternalParent : OsmoGameBase {
+    public class AFOsmoExternalParent : OsmoGameBase 
+    {
         [SerializeField] TangibleManager mManager;
         [SerializeField] AFOsmoVisionService osmoVisionServiceView;
         [SerializeField] AFHierarchyManager hierarchyManager;
@@ -25,7 +25,6 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         [SerializeField] Abacus abacusPrefab;
         [SerializeField] Abacus abacus;
         [SerializeField] Button showAbacusBtn;
-
         bool abacusVisible;
 
         public Vector2 GetCameraDimens() {
@@ -45,7 +44,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
                 Bridge.Helper.SetSettingsButtonVisibility(true);
                 Bridge.Helper.SetVisionActive(true);
                 Bridge.Helper.SetOsmoWorldStickersAllowed(true);
-
+                Debug.LogError("GameStart called");
                 AssignRefs();
                 SetupUI();
 
@@ -88,6 +87,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         void OnSettingsButtonClicked() {
             Debug.LogWarning("Settings Clicked");
         }
+
+     
     }
 
     

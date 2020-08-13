@@ -1,14 +1,14 @@
 {
-    "name": "AbacusFTUE-Scripts",
+    "name": "_TutorialScripts",
     "references": [
+        "Unity.TextMeshPro",
+        "Unity.TextMeshPro.Editor",
         "sdk-plugins",
         "container-api",
         "gamehelper-scripts",
-        "gamehelper-tweening",
         "gamehelper-editor",
         "GamepodCommon",
-        "Unity.TextMeshPro",
-        "Unity.TextMeshPro.Editor"
+        "AbacusFTUE-Scripts"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
