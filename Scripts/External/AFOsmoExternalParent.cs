@@ -15,8 +15,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
     /// <summary>
     /// The top most parent in game hierarchy in case the setup is for Osmo
     /// </summary>
-    public class AFOsmoExternalParent : OsmoGameBase 
-    {
+    public class AFOsmoExternalParent : OsmoGameBase {
         [SerializeField] TangibleManager mManager;
         [SerializeField] AFOsmoVisionService osmoVisionServiceView;
         [SerializeField] AFHierarchyManager hierarchyManager;
@@ -39,11 +38,14 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
 
         protected override void GameStart() {
             if (Bridge != null) {
-                Bridge.Helper.SetOnMainMenuScreen(false);
                 Bridge.Helper.OnSettingsButtonClick += OnSettingsButtonClicked;
                 Bridge.Helper.SetSettingsButtonVisibility(false);
                 Bridge.Helper.SetVisionActive(true);
-                Bridge.Helper.SetOsmoWorldStickersAllowed(true);
+
+                var backBtn = GameObject.Find("arcade back btn");
+                if (backBtn != null) {
+                    backBtn.gameObject.SetActive(false);
+                }
 
                 Debug.LogError("GameStart called");
                 AssignRefs();
@@ -91,9 +93,9 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
             Debug.LogWarning("Settings Clicked");
         }
 
-     
+
     }
 
-    
+
 }
 #endif

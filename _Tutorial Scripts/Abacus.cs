@@ -105,8 +105,6 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             ResetKeys();
             display = FindObjectOfType<AbacusDisplay>();
             display.Initialize();
-
-            Total = 457;         // Arbitrary
         }
 
         private void FindAbacusKeys()
