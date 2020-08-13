@@ -65,12 +65,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
         void StartAskingQuestions()
         {
+            textTyper.AskQuestion(0);
             
-            if (currentAbacusReading != 0)
-                textTyper.AskQuestion(0);
-            else
-                textTyper.AskQuestion(1);
-
         }
     }
 
