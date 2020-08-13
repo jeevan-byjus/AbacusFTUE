@@ -10,6 +10,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         [SerializeField] private float typingSpeed = 1f;
         public float delayBetweenPrompts = 5f;
         [SerializeField] private AudioSource characterVoiceBox;
+        public AudioClip introAudio;
         public TutorialPrompt[] prompts;
         private Abacus abacus;
         public int questionIndex = 0;
@@ -34,6 +35,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
             abacus.OnValueChanged += CheckAnswer;
             questionIndex = 0;
+            characterVoiceBox.clip = introAudio;
+            characterVoiceBox.Play();
         }
 
         public void TypeOut(string sentence)
@@ -79,12 +82,18 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             yield return new WaitForSeconds(0f);
             if (prompts.Length == questionIndex + 1)
             {
-                Debug.LogError("GameOver.......................");
-                osmoGame = GameObject.FindObjectOfType<OsmoGameBase>();
-                if (osmoGame != null)
-                {
-                    osmoGame.Bridge.Helper.SwitchToGame("CastleCreeps");
-                }
+                yield return new WaitForSeconds(2.5f);
+                LoadCastleCreeps();
+            }
+        }
+
+        private void LoadCastleCreeps()
+        {
+            Debug.LogError("GameOver.......................");
+            osmoGame = GameObject.FindObjectOfType<OsmoGameBase>();
+            if (osmoGame != null)
+            {
+                osmoGame.Bridge.Helper.SwitchToGame("CastleCreeps");
             }
         }
 
@@ -126,6 +135,11 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
                     GiveExplanation(questionIndex);
 
                     questionIndex++;
+                    if(characterVoiceBox.isPlaying)
+                    {
+                        Invoke("ShowNextQuestion", characterVoiceBox.clip.length + .5f);
+                    }
+                    else
                     Invoke("ShowNextQuestion", delayBetweenPrompts);
 
                 }

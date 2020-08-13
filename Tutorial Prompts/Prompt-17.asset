@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answer: 17
   questionPrompt: Let's try something different.  Can you make the number 17?
-  questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
+  questionAudio: {fileID: 8300000, guid: c5f9405d2105347bbb2877d5b5c10d93, type: 3}
   explanationPrompt: You're right! a 10 bead, a 5 bead and 2 ones beads, make 17!
-  explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
+  explanationAudio: {fileID: 8300000, guid: 9d25a91d563f1484ca677c79521b12a4, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

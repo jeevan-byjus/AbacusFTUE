@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answer: 869
   questionPrompt: And 869?
-  questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: Of course! I should have known!  Thanks a lot for helping me
-    with my homework! See ya around!
-  explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
+  questionAudio: {fileID: 8300000, guid: be85aaec168c941f1a3637f89e21fa3b, type: 3}
+  explanationPrompt: Perfect! You're really good at this! You're now ready to play
+    this next game! I hope you have tons of fun! Bye!
+  explanationAudio: {fileID: 8300000, guid: 1aecd0644d0714b489c84864b87a6445, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

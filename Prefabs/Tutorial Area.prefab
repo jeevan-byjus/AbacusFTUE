@@ -6536,8 +6536,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typingSpeed: 30
-  delayBetweenPrompts: 7
+  delayBetweenPrompts: 8
   characterVoiceBox: {fileID: 1866820554101534977}
+  introAudio: {fileID: 8300000, guid: a644b29ebaa904cf1954d706211c527b, type: 3}
   prompts:
   - {fileID: 11400000, guid: d99b5cf0261664f67b84eb999127e498, type: 2}
   - {fileID: 11400000, guid: 1dab2c816b62c46e2bffe70c0e43d348, type: 2}

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Prompt-8
   m_EditorClassIdentifier: 
   answer: 8
-  questionPrompt: Now, what do you think the number 8 would look like on an Abacus?
-  questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: If you think about it, 8 is really just 5+3.  So bringing 5 and
-    3-ones to the middle makes eight! Good job!
-  explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
+  questionPrompt: Now, what do you think the number 8 would look like on an abacus?
+  questionAudio: {fileID: 8300000, guid: a4847b709948e489daad19f8ea150ef4, type: 3}
+  explanationPrompt: Wow! Bringing the 5 bead and 3 ones beads to the middle makes
+    eight! Good job!
+  explanationAudio: {fileID: 8300000, guid: faaf5452550234803a6cdbb2026bc661, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}

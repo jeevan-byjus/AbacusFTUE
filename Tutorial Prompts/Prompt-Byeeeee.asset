@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answer: 666
   questionPrompt: Byeeeee!!!
-  questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
+  questionAudio: {fileID: 0}
   explanationPrompt: Seriously, bye.
-  explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
+  explanationAudio: {fileID: 0}
   hintPrompt: 
   hintAudio: {fileID: 0}

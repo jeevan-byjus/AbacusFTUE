@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Prompt-101
   m_EditorClassIdentifier: 
   answer: 101
-  questionPrompt: Let's start with something easy. Do you think you can make 101?
-  questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: Of course you can! My bad. Let's try something harder...
-  explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
+  questionPrompt: We'll begin with something easy. Do you think you can make 101?
+  questionAudio: {fileID: 8300000, guid: 1147e5cad77d543acaf57e1b6ff93654, type: 3}
+  explanationPrompt: Yes! Way to go! 1 100s bead, and a single1s bead!
+  explanationAudio: {fileID: 8300000, guid: 30d06bbc224184b92beaabd062eddbdf, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}
