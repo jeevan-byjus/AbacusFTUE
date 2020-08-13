@@ -15,7 +15,8 @@ MonoBehaviour:
   answer: 38
   questionPrompt: Can you make the number 38?
   questionAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
-  explanationPrompt: That's 3-tens, and 8-ones! Piece of cake!
+  explanationPrompt: That's 3 tens beads, one 5 bead and 3 ones beads! You're on a
+    roll!
   explanationAudio: {fileID: 8300000, guid: f6ed5f91c203c4c1baf79bf5bfe4b952, type: 3}
   hintPrompt: 
   hintAudio: {fileID: 0}
