@@ -103,6 +103,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             osmoGame = GameObject.FindObjectOfType<OsmoGameBase>();
             if (osmoGame != null)
             {
+                PlayerPrefs.SetInt("showed_tutorial", 1);
                 osmoGame.Bridge.Helper.SwitchToGame("CastleCreeps");
             }
         }
