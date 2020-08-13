@@ -41,9 +41,10 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
             if (Bridge != null) {
                 Bridge.Helper.SetOnMainMenuScreen(false);
                 Bridge.Helper.OnSettingsButtonClick += OnSettingsButtonClicked;
-                Bridge.Helper.SetSettingsButtonVisibility(true);
+                Bridge.Helper.SetSettingsButtonVisibility(false);
                 Bridge.Helper.SetVisionActive(true);
                 Bridge.Helper.SetOsmoWorldStickersAllowed(true);
+
                 Debug.LogError("GameStart called");
                 AssignRefs();
                 SetupUI();
