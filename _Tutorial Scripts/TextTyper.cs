@@ -17,6 +17,10 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         private TextMeshPro textField;
         [SerializeField] Animator characterAnimator;
         [SerializeField] OsmoGameBase osmoGame;
+        [HideInInspector]
+        public bool askingQuestion = false;
+        public delegate void Generic(bool questioning);
+        public static event Generic questionOrExplanation; 
 
         private float typeDelay
         {
@@ -32,8 +36,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         {
             textField = GetComponent<TextMeshPro>();
             abacus = FindObjectOfType<Abacus>();
-
-            abacus.OnValueChanged += CheckAnswer;
+           
             questionIndex = 0;
             
         }
@@ -43,10 +46,16 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             Invoke("PlayIntroAudio", 1.5f);
         }
 
+        private void OnDisable()
+        {
+            abacus.OnValueChanged -= CheckAnswer;
+        }
+
         void PlayIntroAudio()
         {
             characterVoiceBox.clip = introAudio;
             characterVoiceBox.Play();
+            
         }
 
         public void TypeOut(string sentence)
@@ -63,6 +72,15 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             {
                 characterVoiceBox.Play();
             }
+            if(questionNumber == 0)
+            {
+                abacus.OnValueChanged += CheckAnswer;
+            }
+            askingQuestion = true;
+            if(questionOrExplanation != null)
+            {
+                questionOrExplanation(askingQuestion);
+            }
         }
 
         public void GiveExplanation(int hintNumber)
@@ -78,6 +96,12 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
                     characterVoiceBox.Play();
                 }
             }
+            askingQuestion = false;
+            if (questionOrExplanation != null)
+            {
+                questionOrExplanation(askingQuestion);
+            }
+
         }
 
         private IEnumerator RevealPrompt(string sentence)
@@ -92,7 +116,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             yield return new WaitForSeconds(0f);
             if (prompts.Length == questionIndex + 1)
             {
-                yield return new WaitForSeconds(2.5f);
+                yield return new WaitForSeconds(2.3f);
                 LoadCastleCreeps();
             }
         }
@@ -139,7 +163,6 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
         private void CheckAnswer(object sender, EventArgs e)
         {
-
             if (null != this)
             {
                 if (characterVoiceBox.isPlaying)
