@@ -42,9 +42,13 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
                 Bridge.Helper.SetSettingsButtonVisibility(false);
                 Bridge.Helper.SetVisionActive(true);
 
-                var backBtn = GameObject.Find("arcade back btn");
-                if (backBtn != null) {
-                    backBtn.gameObject.SetActive(false);
+                // very hacky.. have to fix
+                var tutorialShown = PlayerPrefs.GetInt("showed_tutorial", 0) == 1;
+                if (!tutorialShown) {
+                    var backBtn = GameObject.Find("arcade back btn");
+                    if (backBtn != null) {
+                        backBtn.gameObject.SetActive(false);
+                    }
                 }
 
                 Debug.LogError("GameStart called");
