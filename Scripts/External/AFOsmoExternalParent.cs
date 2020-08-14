@@ -75,7 +75,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
             abacusVisible = true;
             ToggleAbacus();
 
-#if BUILD_NO_ABACUS
+#if UNITY_EDITOR || BUILD_NO_ABACUS
             showAbacusBtn.gameObject.SetActive(true);
 #else
             showAbacusBtn.gameObject.SetActive(false);
