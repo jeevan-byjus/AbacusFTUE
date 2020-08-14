@@ -6553,6 +6553,7 @@ MonoBehaviour:
   questionIndex: 0
   characterAnimator: {fileID: 1866820555293132555}
   osmoGame: {fileID: 0}
+  askingQuestion: 0
 --- !u!95 &1426335721
 Animator:
   serializedVersion: 3
@@ -14362,7 +14363,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4beb055f07aaff244873dec698d0363e, type: 3}
+    m_Font: {fileID: 12800000, guid: befb8ad212258407ab308a8ceb176ea5, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -14518,7 +14519,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4beb055f07aaff244873dec698d0363e, type: 3}
+    m_Font: {fileID: 12800000, guid: befb8ad212258407ab308a8ceb176ea5, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
