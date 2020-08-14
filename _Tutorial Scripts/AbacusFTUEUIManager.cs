@@ -17,12 +17,17 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         private bool initiated = false;
         private int currentAbacusQuestion;
         private int currentAbacusReading = 0;
+        [SerializeField] AudioSource ftueAudioSource;
+
+        private float delayAbacusReading = 0;
 
         void OnEnable()
         {
+            delayAbacusReading = 0;
             AFGameManagerView.OnAbacusValueChanged += OnAbacusValueChanged;
             initiated = false;
             abacusHintSystem.gameObject.SetActive(false);
+            
         }
 
         private void Start()
@@ -39,15 +44,18 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
         void OnAbacusValueChanged(int abacusValue)
         {
-            if(abacusValue >= 0 && !initiated)
+            if(abacusValue >= 0 && !initiated && delayAbacusReading >=3)
             {
-                initiated = true;
-                textTyper.DisableQuestions();
-                questionsUiGroup.alpha = 1;
-                currentAbacusReading = abacusValue;
-                firstQuestionAnimator.SetTrigger("Dissapear");
-                questionUiAnimator.SetTrigger("Appear");
-                Invoke("StartAskingQuestions", 1.5f);
+                if (!ftueAudioSource.isPlaying)
+                {
+                    initiated = true;
+                    textTyper.DisableQuestions();
+                    questionsUiGroup.alpha = 1;
+                    currentAbacusReading = abacusValue;
+                    firstQuestionAnimator.SetTrigger("Dissapear");
+                    questionUiAnimator.SetTrigger("Appear");
+                    Invoke("StartAskingQuestions", 1.5f);
+                }
             }
         }
 
@@ -66,7 +74,11 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         void StartAskingQuestions()
         {
             textTyper.AskQuestion(0);
-            
+        }
+
+        private void Update()
+        {
+            delayAbacusReading += Time.deltaTime;
         }
     }
 

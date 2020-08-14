@@ -32,8 +32,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         {
             textField = GetComponent<TextMeshPro>();
             abacus = FindObjectOfType<Abacus>();
-
-            abacus.OnValueChanged += CheckAnswer;
+           
             questionIndex = 0;
             
         }
@@ -43,10 +42,16 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             Invoke("PlayIntroAudio", 1.5f);
         }
 
+        private void OnDisable()
+        {
+            abacus.OnValueChanged -= CheckAnswer;
+        }
+
         void PlayIntroAudio()
         {
             characterVoiceBox.clip = introAudio;
             characterVoiceBox.Play();
+            
         }
 
         public void TypeOut(string sentence)
@@ -62,6 +67,10 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             if (prompts[questionNumber].questionAudio != null)
             {
                 characterVoiceBox.Play();
+            }
+            if(questionNumber == 0)
+            {
+                abacus.OnValueChanged += CheckAnswer;
             }
         }
 
@@ -139,7 +148,6 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
 
         private void CheckAnswer(object sender, EventArgs e)
         {
-
             if (null != this)
             {
                 if (characterVoiceBox.isPlaying)
