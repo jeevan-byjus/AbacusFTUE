@@ -27,6 +27,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
             AFGameManagerView.OnAbacusValueChanged += OnAbacusValueChanged;
             initiated = false;
             abacusHintSystem.gameObject.SetActive(false);
+            TextTyper.questionOrExplanation += QuestionOrExplanation;
             
         }
 
@@ -39,8 +40,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         void OnDisable()
         {
             AFGameManagerView.OnAbacusValueChanged -= OnAbacusValueChanged;
+            TextTyper.questionOrExplanation -= QuestionOrExplanation;
         }
-
 
         void OnAbacusValueChanged(int abacusValue)
         {
@@ -79,6 +80,22 @@ namespace Byjus.Gamepod.AbacusFTUE.Views
         private void Update()
         {
             delayAbacusReading += Time.deltaTime;
+            
+        }
+
+        void QuestionOrExplanation(bool questioning)
+        {
+            if (!questioning)
+            {
+                hintButton.gameObject.SetActive(false);
+                resetButton.gameObject.SetActive(false);
+
+            }
+            else
+            {
+                hintButton.gameObject.SetActive(true);
+                resetButton.gameObject.SetActive(true);
+            }
         }
     }
 
