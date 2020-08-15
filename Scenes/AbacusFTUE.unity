@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 401863911}
   - component: {fileID: 401863912}
   m_Layer: 0
-  m_Name: OsmoVisionServiceView
+  m_Name: OsmoVisionService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
