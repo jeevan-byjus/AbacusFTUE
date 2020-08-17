@@ -26,6 +26,13 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         [SerializeField] Button showAbacusBtn;
         bool abacusVisible;
 
+        const int maxFrames = 10;
+        const float automaticCaptureDelay = 10f;
+        const int automaticCaptureFrames = 5;
+        const string captureFlags = "castlecreeps";
+        const float captureDelay = 3f;
+        const float launchAutomaticCaptureDelay = 10f;
+
         public Vector2 GetCameraDimens() {
             return new Vector2(TangibleCamera.Width, TangibleCamera.Height);
         }
@@ -64,6 +71,9 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
 #endif
                 hierarchyManager.Setup();
 
+                Bridge.Helper.Tangible.EnableCaptures(maxFrames);
+                StartCoroutine(WaitAndLaunchAutomaticCapture());
+
             } else {
                 Debug.LogWarning("[VisionTest] You are running without the Osmo bridge. No Osmo services will be loaded. Bridge.Helper will be null");
             }
@@ -97,6 +107,34 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
             Debug.LogWarning("Settings Clicked");
         }
 
+
+        IEnumerator WaitAndLaunchAutomaticCapture() {
+            yield return new WaitForSeconds(launchAutomaticCaptureDelay);
+
+            SetAutomaticCaptureFlag(true);
+        }
+
+        IEnumerator AutomaticCapture() {
+            Debug.Log(Time.time + " OsmoCaptureService: Automatic Capture");
+            yield return new WaitForSeconds(automaticCaptureDelay);
+            Capture(automaticCaptureFrames);
+            yield return new WaitForSeconds(captureDelay);
+
+            StartCoroutine(AutomaticCapture());
+        }
+
+        public void SetAutomaticCaptureFlag(bool enabled) {
+            if (enabled) {
+                StartCoroutine(AutomaticCapture());
+            } else {
+                StopAllCoroutines();
+            }
+        }
+
+        void Capture(int numFrames) {
+            Debug.Log(Time.time + " OsmoCaptureService: Capture (" + numFrames + ")");
+            Bridge.Helper.Tangible.SendCaptures(numFrames, captureFlags);
+        }
 
     }
 
