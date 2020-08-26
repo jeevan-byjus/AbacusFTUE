@@ -22,8 +22,9 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
 
         [SerializeField] GameObject visionObjsParent;
         [SerializeField] Abacus abacusPrefab;
-        [SerializeField] Abacus abacus;
         [SerializeField] Button showAbacusBtn;
+
+        Abacus abacus;
         bool abacusVisible;
 
         const int maxFrames = 10;
