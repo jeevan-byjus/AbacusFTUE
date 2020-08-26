@@ -27,11 +27,11 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         bool abacusVisible;
 
         const int maxFrames = 10;
-        const float automaticCaptureDelay = 60f;
+        const float automaticCaptureDelay = 30f;
         const int automaticCaptureFrames = 5;
         const string captureFlags = "castlecreeps";
         const float captureWaitDelay = 10f;
-        const float launchAutomaticCaptureDelay = 10f;
+        const float launchAutomaticCaptureDelay = 5f;
 
         public Vector2 GetCameraDimens() {
             return new Vector2(TangibleCamera.Width, TangibleCamera.Height);

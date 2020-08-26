@@ -14,8 +14,11 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
 
         int lastStableValue;
         int currValue;
+        int numInvalidValues;
         int stabilityCount;
+
         const int valueStabilityThreshold = 1;
+        const int invalidStabilityThreshold = 30;
 
         public void Init() {
             visionService = AFFactory.GetVisionService();
@@ -25,6 +28,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
             lastStableValue = -1;
             currValue = -1;
             stabilityCount = 0;
+            numInvalidValues = 0;
 
             StartCoroutine(ListenForInput());
         }
@@ -41,10 +45,39 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
             }
 
             int value = reader.Evaluate(input.abacus);
-            StabilityCalculations(value);
-            inputListener.OnAbacusValue(value);
+            StabilityCalculations2(value);
+            Debug.LogError("Read value: " + value + ", Stable value: " + lastStableValue);
+            inputListener.OnAbacusValue(lastStableValue);
 
             StartCoroutine(ListenForInput());
+        }
+
+        // continuous occurences of a value for a certain threshold makes it stable
+        // to account for slight inaccuracies, getting a -1 (no/invald abacus) is not counted for continuous occurences
+        // but, when abacus is no longer infront of screen, it should make -1 as the stable value
+        // so, a separate calculation for continuous -1s
+        void StabilityCalculations2(int value) {
+            if (value == -1) {
+                numInvalidValues++;
+                if (numInvalidValues >= invalidStabilityThreshold) {
+                    lastStableValue = -1;
+                    currValue = -1;
+                }
+
+            } else {
+                numInvalidValues = 0;
+
+                if (value != currValue) {
+                    currValue = value;
+                    stabilityCount = 1;
+                } else {
+                    stabilityCount++;
+                    if (stabilityCount >= valueStabilityThreshold) {
+                        lastStableValue = currValue;
+                        stabilityCount = 0;
+                    }
+                }
+            }
         }
 
         void StabilityCalculations(int value) {

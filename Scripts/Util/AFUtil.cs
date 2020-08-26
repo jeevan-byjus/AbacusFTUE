@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Byjus.Gamepod.AbacusFTUE.Util {
     public class AFConstants {
-        public const float INPUT_DELAY = 0.8f;
+        public const float INPUT_DELAY = 0.1f;
         public static float SW_EQUAL_POSITION_DIFF_PERCENT = 0.5f / 100;
         public static float SW_SAME_POINT_MOVED_DIFF_PERCENT = 30.0f / 100;
 
