@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Byjus.Gamepod.Common;
+using Byjus.Gamepod.Common.Vision;
 using Byjus.Gamepod.AbacusFTUE.Util;
 using Byjus.Gamepod.AbacusFTUE.Views;
 using System.Linq;

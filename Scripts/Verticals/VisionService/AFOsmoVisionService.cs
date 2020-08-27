@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Byjus.Gamepod.AbacusFTUE.Util;
-using Byjus.Gamepod.AbacusFTUE.Views;
+using Byjus.Gamepod.Common.Vision;
 using System.Linq;
 
 #if !CC_STANDALONE
@@ -19,11 +19,11 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
     /// </summary>
     public class AFOsmoVisionService : MonoBehaviour, AFIVisionService {
         string lastJson;
-        AFBoundingBox visionBoundingBox;
+        VisionBoundingBox visionBoundingBox;
 
         public void Init() {
             lastJson = "";
-            visionBoundingBox = new AFBoundingBox(new List<Vector2> { new Vector2(-100, 90), new Vector2(100, 90), new Vector2(100, -200), new Vector2(-100, -200) });
+            visionBoundingBox = new VisionBoundingBox(new List<Vector2> { new Vector2(-100, 90), new Vector2(100, 90), new Vector2(100, -200), new Vector2(-100, -200) });
 
             VisionConnector.Register(
                     apiKey: API.Key,
