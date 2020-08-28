@@ -13,7 +13,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Views {
             ftueView.OnAbacusValue(value);
         }
 
-        public void OnDone() {
+        public void OnAbacusFTUEDone(bool finished) {
             // ftue done, exit maybe
             Application.Quit();
         }
