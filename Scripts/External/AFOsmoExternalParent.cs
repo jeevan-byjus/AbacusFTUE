@@ -29,7 +29,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         const int maxFrames = 10;
         const float automaticCaptureDelay = 30f;
         const int automaticCaptureFrames = 5;
-        const string captureFlags = "castlecreeps";
+        const string captureFlags = "abacusFTUE";
+        const string manualCaptureFlags = "abacusFTUE_manual";
         const float captureWaitDelay = 10f;
         const float launchAutomaticCaptureDelay = 5f;
 
@@ -117,7 +118,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         IEnumerator AutomaticCapture() {
             Debug.Log(Time.time + " AFOsmoCaptureService: Automatic Capture");
             yield return new WaitForSeconds(automaticCaptureDelay);
-            Capture(automaticCaptureFrames);
+            Bridge.Helper.Tangible.SendCaptures(automaticCaptureFrames, captureFlags);
             yield return new WaitForSeconds(captureWaitDelay);
 
             StartCoroutine(AutomaticCapture());
@@ -129,11 +130,6 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
             } else {
                 StopAllCoroutines();
             }
-        }
-
-        void Capture(int numFrames) {
-            Debug.Log(Time.time + " AFOsmoCaptureService: Capture (" + numFrames + ")");
-            Bridge.Helper.Tangible.SendCaptures(numFrames, captureFlags);
         }
 
         bool manualCaptureInProgress;
@@ -151,7 +147,7 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         IEnumerator ManualCapture(int numFrames) {
             Debug.Log(Time.time + " AFOsmoCaptureService: Manual Capture (" + numFrames + ")");
             manualCaptureInProgress = true;
-            Capture(numFrames);
+            Bridge.Helper.Tangible.SendCaptures(numFrames, manualCaptureFlags);
             yield return new WaitForSeconds(captureWaitDelay);
             manualCaptureInProgress = false;
         }
