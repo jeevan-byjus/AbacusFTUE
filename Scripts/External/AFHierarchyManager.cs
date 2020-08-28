@@ -10,6 +10,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Externals {
         public void Setup() {
             inputParser.inputListener = gameManager;
             inputParser.Init();
+
+            gameManager.Init();
         }
     }
 }

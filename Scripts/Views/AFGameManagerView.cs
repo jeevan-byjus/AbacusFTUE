@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
 using Byjus.Gamepod.AbacusFTUE.Verticals;
-using UnityEngine.UI;
 
 namespace Byjus.Gamepod.AbacusFTUE.Views {
+    public class AFGameManagerView : MonoBehaviour, IAbacusFTUEParent, AFIExtInputListener {
+        [SerializeField] AbacusFTUEView ftueView;
 
-    public class AFGameManagerView : MonoBehaviour, AFIExtInputListener {
-
-        public delegate void  AbacusValue(int x);
-        public static event AbacusValue OnAbacusValueChanged;
+        public void Init() {
+            ftueView.Init(this);
+        }
 
         public void OnAbacusValue(int value) {
-            Debug.LogError("Abacus value received: " + value);
-            if(OnAbacusValueChanged != null)
-            {
-                OnAbacusValueChanged(value);
-            }
+            ftueView.OnAbacusValue(value);
+        }
+
+        public void OnAbacusFTUEDone(bool finished) {
+            // ftue done, exit maybe
+            Application.Quit();
         }
     }
 
- 
+
 }

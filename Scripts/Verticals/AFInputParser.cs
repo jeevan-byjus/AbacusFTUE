@@ -16,9 +16,8 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
         int currValue;
         int numInvalidValues;
         int stabilityCount;
-
         const int valueStabilityThreshold = 1;
-        const int invalidStabilityThreshold = 30;
+        const int invalidStabilityThreshold = 60;
 
         public void Init() {
             visionService = AFFactory.GetVisionService();
@@ -81,14 +80,25 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
         }
 
         void StabilityCalculations(int value) {
-            if (value != currValue && value != -1) {
-                currValue = value;
-                stabilityCount = 1;
-            } else if (value == currValue) {
-                stabilityCount++;
-                if (stabilityCount >= valueStabilityThreshold) {
-                    lastStableValue = currValue;
-                    stabilityCount = 0;
+            if (value == -1) {
+                numInvalidValues++;
+                if (numInvalidValues >= invalidStabilityThreshold) {
+                    lastStableValue = -1;
+                    currValue = -1;
+                }
+
+            } else {
+                numInvalidValues = 0;
+
+                if (value != currValue) {
+                    currValue = value;
+                    stabilityCount = 1;
+                } else {
+                    stabilityCount++;
+                    if (stabilityCount >= valueStabilityThreshold) {
+                        lastStableValue = currValue;
+                        stabilityCount = 0;
+                    }
                 }
             }
         }
