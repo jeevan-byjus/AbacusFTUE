@@ -17,7 +17,6 @@ namespace Byjus.Gamepod.AbacusFTUE.Verticals {
 
             var camDimens = AFCameraUtil.MainDimens();
             var ret = AFVisionUtil.ParseInput(mimicObjs, camDimens);
-            Debug.LogError("Returning: " + ret);
             return ret;
         }
 
